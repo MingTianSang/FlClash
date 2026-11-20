@@ -110,6 +110,48 @@ void main() {
       expect(workDirs(), isEmpty);
     });
 
+    test('restores the selected background and its opacity', () async {
+      final name = 'background-${'c' * 32}.png';
+      final image = File(await appPath.backgroundImagePath(name))
+        ..createSync(recursive: true)
+        ..writeAsStringSync('background image');
+      final source = buildContainer();
+      source
+          .read(themeSettingProvider.notifier)
+          .update(
+            (state) =>
+                state.copyWith(backgroundImage: name, backgroundOpacity: 0.6),
+          );
+      final archivePath = await backupToKept(actionOf(source));
+      image.deleteSync();
+      final target = buildContainer();
+      await actionOf(
+        target,
+      ).restore(RestoreOption.all, (_) async => archivePath);
+      expect(target.read(themeSettingProvider).backgroundImage, name);
+      expect(target.read(themeSettingProvider).backgroundOpacity, 0.6);
+      expect(image.readAsStringSync(), 'background image');
+    });
+
+    test('a profile-only restore keeps the current background', () async {
+      final name = 'background-${'d' * 32}.png';
+      final image = File(await appPath.backgroundImagePath(name))
+        ..createSync(recursive: true)
+        ..writeAsStringSync('unused background');
+      final source = buildContainer();
+      source
+          .read(themeSettingProvider.notifier)
+          .update((state) => state.copyWith(backgroundImage: name));
+      final archivePath = await backupToKept(actionOf(source));
+      image.deleteSync();
+      final target = buildContainer();
+      await actionOf(
+        target,
+      ).restore(RestoreOption.onlyProfiles, (_) async => archivePath);
+      expect(target.read(themeSettingProvider).backgroundImage, isNull);
+      expect(image.existsSync(), isFalse);
+    });
+
     test('brings back the attachments of local modules and cleans the '
         'rest', () async {
       final module = MitmModule(

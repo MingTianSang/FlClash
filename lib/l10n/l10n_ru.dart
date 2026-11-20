@@ -9,6 +9,88 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get backgroundImage => 'Фоновое изображение';
+
+  @override
+  String get backgroundImageChoose => 'Выбрать изображение';
+
+  @override
+  String get backgroundImageRemove => 'Удалить изображение';
+
+  @override
+  String get backgroundImageOpacity => 'Непрозрачность изображения';
+
+  @override
+  String get backgroundImageHint =>
+      'Применяется к фону страниц. Изображение сохраняется в приложении. Максимальный размер: 20 МБ.';
+
+  @override
+  String get backgroundImageInvalid =>
+      'Не удалось открыть изображение. Выберите изображение поддерживаемого формата.';
+
+  @override
+  String get backgroundImageTooLarge =>
+      'Выберите изображение размером не более 20 МБ.';
+
+  @override
+  String get backgroundImageMissing =>
+      'Фоновое изображение отсутствует или не открывается.';
+
+  @override
+  String get usage => 'Трафик';
+
+  @override
+  String get appUsageProfiles => 'Трафик профилей';
+
+  @override
+  String get appUsageUnknownProfile => 'Профиль не определён';
+
+  @override
+  String get appUsageProfileHint =>
+      'Учитывается только трафик через прокси для профиля, активного при открытии соединения, без прямых и заблокированных подключений. Учёт начинается с этой версии и может отличаться от расчётов провайдера.';
+
+  @override
+  String get appUsage => 'Пересылка трафика';
+
+  @override
+  String get appUsageToday => 'Сегодня';
+
+  @override
+  String get appUsageWeek => '7 дней';
+
+  @override
+  String get appUsageMonth => '30 дней';
+
+  @override
+  String get appUsageUnknown => 'Неизвестное приложение';
+
+  @override
+  String get appUsageHint =>
+      'Учитывается весь трафик приложений, обработанный FlClash, включая прямые и прокси-соединения. Соединения без определённого процесса относятся к неизвестному приложению.';
+
+  @override
+  String get appUsageEmpty => 'За этот период трафик не записан.';
+
+  @override
+  String get appUsageLoadFailed => 'Не удалось загрузить историю трафика.';
+
+  @override
+  String get appUsageDaily => 'Трафик по дням';
+
+  @override
+  String get appUsageCustomRange => 'Выбор периода';
+
+  @override
+  String get appUsageFrom => 'Начальная дата';
+
+  @override
+  String get appUsageTo => 'Конечная дата';
+
+  @override
+  String get appUsageInvalidRange =>
+      'Введите корректные даты в формате YYYY-MM-DD. Конечная дата не должна предшествовать начальной.';
+
+  @override
   String get rule => 'Правило';
 
   @override

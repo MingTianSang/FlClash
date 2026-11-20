@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/models/models.dart';
+import 'package:fl_clash/models/app_usage.dart';
 
 import 'desktop/model.dart';
 import 'method.dart';
@@ -312,6 +313,23 @@ abstract class CoreHandlerInterface {
   }
 
   Future<void> resetTraffic() => _commandUnobserved(CoreMethod.trafficReset);
+
+  Future<AppUsageReport> getAppUsage(AppUsageRange range) {
+    return _query(
+      CoreMethod.trafficAppUsage,
+      _cast<AppUsageReport>,
+      arguments: {
+        'from': appUsageDate(range.from),
+        'to': appUsageDate(range.to),
+      },
+      model: AppUsageReport.fromJson,
+    );
+  }
+
+  Future<void> flushAppUsage() => _command(
+    CoreMethod.trafficFlushAppUsage,
+    timeout: const Duration(seconds: 1),
+  );
 
   /// Runs [present] where the list is decoded, possibly in another isolate.
   Future<R> getConnectionsWith<R>(R Function(List<TrackerInfo>) present) {

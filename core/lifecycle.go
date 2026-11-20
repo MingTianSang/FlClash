@@ -31,6 +31,7 @@ func handleInit(params *InitParams) error {
 	sdkVersion.Store(int32(params.Version))
 	constant.SetHomeDir(params.HomeDir)
 	initOwnership(params.HomeDir)
+	currentAppUsage.configure(params.HomeDir)
 	clearSpilledResponses()
 	isInit.Store(true)
 	return nil
@@ -103,6 +104,7 @@ func handleShutdown() {
 	isInit.Store(false)
 	configMu.Unlock()
 
+	_ = handleFlushAppUsage()
 	handleForceGC()
 }
 

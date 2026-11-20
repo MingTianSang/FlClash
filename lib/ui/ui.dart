@@ -5,6 +5,7 @@ export 'emoji.dart';
 export 'fonts.dart';
 export 'list_item.dart';
 export 'nested_sheet.dart';
+export 'page_background.dart';
 export 'null_status_illustration.dart';
 export 'profile_id.dart';
 export 'qr_code.dart';

@@ -13,6 +13,17 @@ Hotfix releases (3.50.x) carry only cherry-picks listed in the SDK's `CHANGELOG.
 The SDK checkout carries the engine sources under `engine/src/flutter`, so an entry below that names an engine file can
 be checked against the new SDK with a plain `diff` of that file between the two checkouts.
 
+## Static image opacity changes must repaint
+
+- **Bug:** in Flutter 3.50.0, `RenderImage.opacity` replaces the animation and its listener without marking the
+  image for repaint. Replacing an `AlwaysStoppedAnimation` changes the value but emits no event, so an image in a
+  repaint boundary keeps its previous appearance until another change dirties it.
+- **Workaround:** `lib/widgets/background_image.dart` and `lib/views/theme_background.dart` apply the background
+  image's opacity through an `Opacity` widget in `Image.frameBuilder`. Error messages keep their normal opacity.
+- **Remove when:** the SDK repaints when a static opacity animation is replaced. First check the pixel assertions in
+  `test/widgets/background_image_test.dart` without the wrapper: changing from 100% to 50% and back must update the
+  painted image without remounting the page or forcing an unrelated repaint.
+
 ## Wrong-size back buffer on macOS
 
 - **Bug:** [flutter/flutter#185394](https://github.com/flutter/flutter/issues/185394). `removeSurfaceForSize:` in

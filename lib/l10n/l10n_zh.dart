@@ -9,6 +9,83 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get backgroundImage => '背景图';
+
+  @override
+  String get backgroundImageChoose => '选择图片';
+
+  @override
+  String get backgroundImageRemove => '清除图片';
+
+  @override
+  String get backgroundImageOpacity => '背景图不透明度';
+
+  @override
+  String get backgroundImageHint => '用于各页面背景，所选图片会保存在应用中，文件大小不超过 20 MB。';
+
+  @override
+  String get backgroundImageInvalid => '无法读取这张图片，请选择支持的图片格式。';
+
+  @override
+  String get backgroundImageTooLarge => '请选择不超过 20 MB 的图片。';
+
+  @override
+  String get backgroundImageMissing => '背景图已丢失或无法读取。';
+
+  @override
+  String get usage => '用量';
+
+  @override
+  String get appUsageProfiles => '配置用量';
+
+  @override
+  String get appUsageUnknownProfile => '未归属配置';
+
+  @override
+  String get appUsageProfileHint =>
+      '仅统计经过代理节点的流量，不含直连与拦截；连接归属建立时的配置。旧记录无法回溯代理用量，统计可能与服务商计费不同。';
+
+  @override
+  String get appUsage => '流量转发';
+
+  @override
+  String get appUsageToday => '今天';
+
+  @override
+  String get appUsageWeek => '近 7 天';
+
+  @override
+  String get appUsageMonth => '近 30 天';
+
+  @override
+  String get appUsageUnknown => '未知应用';
+
+  @override
+  String get appUsageHint =>
+      '按应用统计经 FlClash 处理的全部流量，包含直连与代理。无法识别进程的连接归入“未知应用”。';
+
+  @override
+  String get appUsageEmpty => '该时段暂无用量记录。';
+
+  @override
+  String get appUsageLoadFailed => '无法读取用量历史。';
+
+  @override
+  String get appUsageDaily => '每日用量';
+
+  @override
+  String get appUsageCustomRange => '自定义日期范围';
+
+  @override
+  String get appUsageFrom => '开始日期';
+
+  @override
+  String get appUsageTo => '结束日期';
+
+  @override
+  String get appUsageInvalidRange => '请输入 YYYY-MM-DD 格式的有效日期，结束日期不能早于开始日期。';
+
+  @override
   String get rule => '规则';
 
   @override

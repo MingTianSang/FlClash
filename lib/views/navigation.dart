@@ -44,6 +44,12 @@ class Navigation implements NavigationPort {
         modes: [NavigationItemMode.moreFull],
       ),
       NavigationItem(
+        glyph: AppGlyphs.appsList,
+        label: PageLabel.appUsage,
+        builder: (_) => const AppUsageView(),
+        modes: [NavigationItemMode.desktop, NavigationItemMode.moreFull],
+      ),
+      NavigationItem(
         glyph: AppGlyphs.resources,
         label: PageLabel.resources,
         builder: (_) => const ResourcesView(),

@@ -9,6 +9,89 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get backgroundImage => 'Image de fond';
+
+  @override
+  String get backgroundImageChoose => 'Choisir une image';
+
+  @override
+  String get backgroundImageRemove => 'Supprimer l’image';
+
+  @override
+  String get backgroundImageOpacity => 'Opacité de l’image';
+
+  @override
+  String get backgroundImageHint =>
+      'S’applique au fond des pages. L’image est enregistrée dans l’application. Taille maximale : 20 Mo.';
+
+  @override
+  String get backgroundImageInvalid =>
+      'Impossible d’ouvrir cette image. Choisissez un format pris en charge.';
+
+  @override
+  String get backgroundImageTooLarge =>
+      'Choisissez une image de 20 Mo maximum.';
+
+  @override
+  String get backgroundImageMissing =>
+      'L’image de fond est absente ou ne peut pas être ouverte.';
+
+  @override
+  String get usage => 'Utilisation';
+
+  @override
+  String get appUsageProfiles => 'Consommation par profil';
+
+  @override
+  String get appUsageUnknownProfile => 'Profil non attribué';
+
+  @override
+  String get appUsageProfileHint =>
+      'Compte uniquement le trafic via les nœuds proxy, hors connexions directes et bloquées, pour le profil actif à l’ouverture de la connexion. Ce relevé commence avec cette version et peut différer de la facturation du fournisseur.';
+
+  @override
+  String get appUsage => 'Transfert de trafic';
+
+  @override
+  String get appUsageToday => 'Aujourd’hui';
+
+  @override
+  String get appUsageWeek => '7 jours';
+
+  @override
+  String get appUsageMonth => '30 jours';
+
+  @override
+  String get appUsageUnknown => 'Application inconnue';
+
+  @override
+  String get appUsageHint =>
+      'Compte par application tout le trafic traité par FlClash, connexions directes et proxy comprises. Les connexions sans processus identifié sont regroupées sous Application inconnue.';
+
+  @override
+  String get appUsageEmpty => 'Aucun trafic enregistré pour cette période.';
+
+  @override
+  String get appUsageLoadFailed =>
+      'Impossible de charger l’historique du trafic.';
+
+  @override
+  String get appUsageDaily => 'Trafic quotidien';
+
+  @override
+  String get appUsageCustomRange => 'Période personnalisée';
+
+  @override
+  String get appUsageFrom => 'Date de début';
+
+  @override
+  String get appUsageTo => 'Date de fin';
+
+  @override
+  String get appUsageInvalidRange =>
+      'Saisissez des dates valides au format YYYY-MM-DD. La date de fin ne doit pas précéder la date de début.';
+
+  @override
   String get rule => 'Règle';
 
   @override

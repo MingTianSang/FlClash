@@ -227,7 +227,7 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.scrollUntilVisible(
-        find.byTooltip('Add'),
+        find.byTooltip('Add').hitTestable(),
         200,
         scrollable: find.byType(Scrollable).first,
       );

@@ -1465,6 +1465,32 @@ every proxy group is a provider, `select` groups included, and checking one test
 shown to cut the VPN's own network while the screen is off, holding back failures measured then needs only a screen
 on/off signal.
 
+## Application Usage History
+
+`core/app_usage.go` owns application accounting independently of UI event queues and engine attachment. It retains
+trackers through two stable closed samples, samples cumulative byte deltas each second, excludes the Core's internal
+DNS connections, and checkpoints dirty local-calendar days every five seconds. Each day is an atomically replaced
+JSON file under `app_usage/` in the Core home. Failed writes keep their pending totals; unreadable existing history
+fails instead of being replaced. Process paths identify applications, case-insensitively on Windows, with process
+names as the fallback and an empty key for unknown applications. No destinations or request contents are stored.
+The version 3 day format groups by profile ID and process identity and keeps separate proxy byte counters.
+The actual terminal outbound's type at registration determines proxy use, excluding direct, rejected, DNS, and
+non-terminal routing adapters. That classification stays with the connection across config changes. Versions 1
+and 2 retain their forwarding totals, with zero proxy counters because their route type cannot be recovered;
+version 1 records also remain unassigned. `SetupParams` carries the applied profile ID and label through
+desktop setup and Android shared-state quick setup. The Core adopts that identity only after applying the config;
+the built-in fallback has no profile. Trackers retain the profile active at registration across switches, while
+labels are refreshed by ID. Profile IDs, not names, separate histories, including deleted profiles.
+If routing did not resolve a process, accounting resolves a local socket's owner at registration, using a copy of
+Android metadata for the package callback. It never changes the routing metadata or the process lookup setting.
+
+`traffic.appUsage` checkpoints before returning the requested inclusive date range, surfacing persistence failures.
+`traffic.flushAppUsage` checkpoints before normal application exit without changing lifecycle ownership. The application list in
+`lib/views/app_usage.dart` refreshes only while visible and uses lazy slivers; accounting continues while it is hidden.
+The Usage root separates unfiltered application forwarding totals from proxy-only profile totals. A profile opens
+its own page with an independent date range, daily proxy totals, and application breakdown; popping returns to the
+profile list. The forwarding tab has no profile selector. Client proxy byte counts are not a provider billing API.
+
 ## Database
 
 The app uses Drift/SQLite in `lib/database/`. `schemaVersion` in `lib/database/database.dart` is the migration

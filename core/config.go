@@ -162,6 +162,11 @@ func applyConfig(params *SetupParams) error {
 
 	currentConfig = cfg
 	hub.ApplyConfig(cfg)
+	profile := AppUsageProfile{}
+	if err == nil {
+		profile = AppUsageProfile{ID: params.ProfileID, Name: params.ProfileName}
+	}
+	currentAppUsage.setProfile(profile)
 	patchSelectGroup(params.SelectedMap)
 	updateListeners(cfg)
 	// After the listeners: a probe sent while the TUN is rebuilt carries the

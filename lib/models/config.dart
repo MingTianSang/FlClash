@@ -491,6 +491,10 @@ Object? _readLiquidGlass(Map<dynamic, dynamic> json, String key) {
 @freezed
 abstract class ThemeProps with _$ThemeProps {
   const factory ThemeProps({
+    @JsonKey(fromJson: backgroundImageFromJson) String? backgroundImage,
+    @Default(defaultBackgroundOpacity)
+    @JsonKey(fromJson: backgroundOpacityFromJson)
+    double backgroundOpacity,
     int? primaryColor,
     @Default(defaultPrimaryColors) List<int> primaryColors,
     @Default(ThemeMode.system) ThemeMode themeMode,

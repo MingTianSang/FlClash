@@ -179,7 +179,8 @@ SharedState sharedState(Ref ref) {
   final currentProfile = ref.watch(
     currentProfileProvider.select(
       (state) => CurrentProfileSelectorState(
-        label: state?.label ?? '',
+        id: state?.id,
+        label: state?.realLabel ?? '',
         selectedMap: state?.selectedMap ?? {},
       ),
     ),
@@ -205,6 +206,8 @@ SharedState sharedState(Ref ref) {
     startTip: currentAppLocalizations.startVpn,
     localNetworkTip: currentAppLocalizations.localNetworkDeniedTip,
     setupParams: SetupParams(
+      profileId: currentProfile.id?.toString() ?? '',
+      profileName: currentProfileName,
       selectedMap: selectedMap,
       options: ref.watch(coreOptionsProvider),
     ),

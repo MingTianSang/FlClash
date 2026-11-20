@@ -70,7 +70,8 @@ class BackupAction extends _$BackupAction {
       database.clashProvidersDao.query().get(),
       database.mitmModulesDao.query().get(),
     ).wait;
-    final configMap = ref.read(configProvider).toJson();
+    final config = ref.read(configProvider);
+    final configMap = config.toJson();
     configMap['version'] = await preferences.getVersion();
     final archivePath = join(workDir, 'backup.zip');
     await backupTask((
@@ -83,6 +84,7 @@ class BackupAction extends _$BackupAction {
         scriptIds: scriptIds,
         providers: providers,
         mitmModules: mitmModules,
+        backgroundImage: config.themeProps.backgroundImage,
       ),
     ));
     return archivePath;
@@ -104,7 +106,11 @@ class BackupAction extends _$BackupAction {
     final previousProviders = await database.clashProvidersDao.query().get();
     final putBack = stagingDirPath == null
         ? null
-        : await _copyStagedFiles(data, stagingDirPath);
+        : await _copyStagedFiles(
+            data,
+            stagingDirPath,
+            includeBackground: config != null,
+          );
     try {
       await database.restore(
         data.profiles,
@@ -160,8 +166,9 @@ class BackupAction extends _$BackupAction {
   /// is how a restore whose rows fail takes them back out.
   Future<Future<void> Function()> _copyStagedFiles(
     MigrationData data,
-    String stagingDirPath,
-  ) async {
+    String stagingDirPath, {
+    required bool includeBackground,
+  }) async {
     final homeDirPath = await appPath.homeDirPath;
     final replacedDirPath = join(stagingDirPath, 'replaced');
     final copied = <String, bool>{};
@@ -179,7 +186,10 @@ class BackupAction extends _$BackupAction {
     }
 
     try {
-      for (final entry in BackupEntries.ofData(data)) {
+      for (final entry in BackupEntries.ofData(
+        data,
+        includeBackground: includeBackground,
+      )) {
         final staged = File(BackupEntries.resolve(stagingDirPath, entry));
         if (!await staged.exists()) {
           continue;

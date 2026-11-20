@@ -972,6 +972,33 @@ void main() {
   });
 
   group('ThemeProps JSON round-trip', () {
+    test('retains a managed background and clamps its opacity', () {
+      final name = 'background-${'a' * 32}.png';
+      final props = ThemeProps(backgroundImage: name, backgroundOpacity: 0.6);
+      final restored = roundTrip(props.toJson, ThemeProps.fromJson);
+      expect(restored.backgroundImage, name);
+      expect(restored.backgroundOpacity, 0.6);
+      expect(ThemeProps.fromJson({}).backgroundOpacity, 0.25);
+      expect(
+        ThemeProps.fromJson({'backgroundOpacity': -1}).backgroundOpacity,
+        0,
+      );
+      expect(
+        ThemeProps.fromJson({'backgroundOpacity': 2}).backgroundOpacity,
+        1,
+      );
+      expect(
+        ThemeProps.fromJson({'backgroundOpacity': 'bad'}).backgroundOpacity,
+        0.25,
+      );
+      expect(
+        ThemeProps.fromJson({
+          'backgroundImage': '../private.png',
+        }).backgroundImage,
+        isNull,
+      );
+    });
+
     test('default values', () {
       const props = ThemeProps();
       expect(props.primaryColor, null);

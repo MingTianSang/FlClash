@@ -12,6 +12,8 @@ _SetupParams _$SetupParamsFromJson(Map<String, dynamic> json) => _SetupParams(
       : SetupBase.fromJson(json['base'] as Map<String, dynamic>),
   selectedMap: Map<String, String>.from(json['selected-map'] as Map),
   options: CoreOptions.fromJson(json['options'] as Map<String, dynamic>),
+  profileId: json['profile-id'] as String? ?? '',
+  profileName: json['profile-name'] as String? ?? '',
 );
 
 Map<String, dynamic> _$SetupParamsToJson(_SetupParams instance) =>
@@ -19,6 +21,8 @@ Map<String, dynamic> _$SetupParamsToJson(_SetupParams instance) =>
       'base': ?instance.base,
       'selected-map': instance.selectedMap,
       'options': instance.options,
+      'profile-id': instance.profileId,
+      'profile-name': instance.profileName,
     };
 
 _CoreOptions _$CoreOptionsFromJson(Map<String, dynamic> json) => _CoreOptions(

@@ -7,6 +7,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class Picker {
+  Future<Uint8List?> pickBackgroundImage() async {
+    final file = await FilePicker.pickFile(
+      type: FileType.image,
+      initialDirectory: await appPath.downloadDirPath,
+    );
+    if (file == null) {
+      return null;
+    }
+    if ((await file.length() ?? 0) > maxBackgroundImageBytes) {
+      throw MessageException(currentAppLocalizations.backgroundImageTooLarge);
+    }
+    return file.readBytes();
+  }
+
   Future<PlatformFile?> pickerFile() async {
     return FilePicker.pickFile(initialDirectory: await appPath.downloadDirPath);
   }

@@ -1039,6 +1039,29 @@ void main() {
     expect(container.read(sharedStateProvider).showStopAction, false);
   });
 
+  test(
+    'shared state carries the selected profile identity to quick setup',
+    () async {
+      final profiles = [
+        Profile.normal(label: 'Office'),
+        Profile.normal(label: 'Home'),
+      ];
+      (container.read(profilesProvider.notifier) as TestProfiles).replace(
+        profiles,
+      );
+      container.listen(sharedStateProvider, (_, _) {});
+      for (final profile in profiles) {
+        container
+            .read(currentProfileIdProvider.notifier)
+            .update((_) => profile.id);
+        await container.pump();
+        final params = container.read(sharedStateProvider).setupParams!;
+        expect(params.profileId, profile.id.toString());
+        expect(params.profileName, profile.realLabel);
+      }
+    },
+  );
+
   test('shared state follows the locale whose messages are loaded', () async {
     container.listen(sharedStateProvider, (_, _) {});
     loadAppLocalizations(const Locale('en'));

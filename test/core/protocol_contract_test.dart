@@ -247,6 +247,8 @@ void main() {
       const SetupParams(
         selectedMap: {'GLOBAL': 'DIRECT'},
         options: CoreOptions(testUrl: 'test'),
+        profileId: '9007199254740993',
+        profileName: 'Work',
       ),
     );
     final switched = await handler.changeProxy(
@@ -290,6 +292,8 @@ void main() {
       'version': 35,
     });
     expect(json.decode(json.encode(handler.calls[CoreMethod.configSetup])), {
+      'profile-id': '9007199254740993',
+      'profile-name': 'Work',
       'selected-map': {'GLOBAL': 'DIRECT'},
       'options': {
         'test-url': 'test',

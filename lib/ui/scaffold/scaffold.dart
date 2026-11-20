@@ -8,6 +8,8 @@ import 'package:flutter/widgets.dart';
 import 'package:prism_ui/icons/icons.dart';
 import 'package:prism_ui/prism_ui.dart';
 
+import '../page_background.dart';
+
 part 'scaffold_actions.dart';
 part 'scaffold_search.dart';
 
@@ -864,7 +866,10 @@ class ScaffoldState extends State<Scaffold>
       footActions: form.pop?.atFoot == true
           ? _buildFootActions(widget.confirmationAction!)
           : null,
-      backgroundColor: widget.backgroundColor,
+      backgroundColor: PageBackgroundScope.colorOf(
+        context,
+        widget.backgroundColor,
+      ),
       resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
     );
   }

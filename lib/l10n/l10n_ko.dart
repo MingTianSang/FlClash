@@ -9,6 +9,85 @@ class AppLocalizationsKo extends AppLocalizations {
   AppLocalizationsKo([String locale = 'ko']) : super(locale);
 
   @override
+  String get backgroundImage => '배경 이미지';
+
+  @override
+  String get backgroundImageChoose => '이미지 선택';
+
+  @override
+  String get backgroundImageRemove => '이미지 제거';
+
+  @override
+  String get backgroundImageOpacity => '이미지 불투명도';
+
+  @override
+  String get backgroundImageHint =>
+      '각 페이지의 배경에 적용됩니다. 선택한 이미지는 앱에 저장됩니다. 최대 파일 크기: 20 MB.';
+
+  @override
+  String get backgroundImageInvalid => '이미지를 열 수 없습니다. 지원되는 이미지를 선택하세요.';
+
+  @override
+  String get backgroundImageTooLarge => '20 MB 이하의 이미지를 선택하세요.';
+
+  @override
+  String get backgroundImageMissing => '배경 이미지가 없거나 열 수 없습니다.';
+
+  @override
+  String get usage => '사용량';
+
+  @override
+  String get appUsageProfiles => '프로필별 사용량';
+
+  @override
+  String get appUsageUnknownProfile => '미지정 프로필';
+
+  @override
+  String get appUsageProfileHint =>
+      '연결 시작 시 활성화된 프로필의 프록시 트래픽만 집계하며 직접 연결과 차단된 트래픽은 제외합니다. 기록은 이 버전부터 시작되며 서비스 제공자의 청구량과 다를 수 있습니다.';
+
+  @override
+  String get appUsage => '트래픽 전달';
+
+  @override
+  String get appUsageToday => '오늘';
+
+  @override
+  String get appUsageWeek => '7일';
+
+  @override
+  String get appUsageMonth => '30일';
+
+  @override
+  String get appUsageUnknown => '알 수 없는 앱';
+
+  @override
+  String get appUsageHint =>
+      '직접 연결과 프록시 연결을 포함하여 FlClash가 처리한 모든 트래픽을 앱별로 집계합니다. 프로세스를 식별할 수 없는 연결은 알 수 없는 앱으로 표시됩니다.';
+
+  @override
+  String get appUsageEmpty => '이 기간에 기록된 사용량이 없습니다.';
+
+  @override
+  String get appUsageLoadFailed => '사용량 기록을 불러올 수 없습니다.';
+
+  @override
+  String get appUsageDaily => '일별 사용량';
+
+  @override
+  String get appUsageCustomRange => '기간 지정';
+
+  @override
+  String get appUsageFrom => '시작 날짜';
+
+  @override
+  String get appUsageTo => '종료 날짜';
+
+  @override
+  String get appUsageInvalidRange =>
+      'YYYY-MM-DD 형식의 올바른 날짜를 입력하세요. 종료 날짜는 시작 날짜보다 빠를 수 없습니다.';
+
+  @override
   String get rule => '규칙';
 
   @override

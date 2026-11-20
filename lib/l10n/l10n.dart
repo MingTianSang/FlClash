@@ -108,6 +108,156 @@ abstract class AppLocalizations {
     Locale('zh'),
   ];
 
+  /// No description provided for @backgroundImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Background image'**
+  String get backgroundImage;
+
+  /// No description provided for @backgroundImageChoose.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose image'**
+  String get backgroundImageChoose;
+
+  /// No description provided for @backgroundImageRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove image'**
+  String get backgroundImageRemove;
+
+  /// No description provided for @backgroundImageOpacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Image opacity'**
+  String get backgroundImageOpacity;
+
+  /// No description provided for @backgroundImageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to page backgrounds. The selected image is saved in the app; maximum file size: 20 MB.'**
+  String get backgroundImageHint;
+
+  /// No description provided for @backgroundImageInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This image cannot be opened. Please choose a supported image.'**
+  String get backgroundImageInvalid;
+
+  /// No description provided for @backgroundImageTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose an image smaller than 20 MB.'**
+  String get backgroundImageTooLarge;
+
+  /// No description provided for @backgroundImageMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Background image is missing or cannot be opened.'**
+  String get backgroundImageMissing;
+
+  /// No description provided for @usage.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage'**
+  String get usage;
+
+  /// No description provided for @appUsageProfiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile usage'**
+  String get appUsageProfiles;
+
+  /// No description provided for @appUsageUnknownProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Unassigned profile'**
+  String get appUsageUnknownProfile;
+
+  /// No description provided for @appUsageProfileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Counts traffic through proxy nodes, excluding direct and blocked traffic, under the profile active when the connection opened. Proxy usage is recorded from this version onward and may differ from provider billing.'**
+  String get appUsageProfileHint;
+
+  /// No description provided for @appUsage.
+  ///
+  /// In en, this message translates to:
+  /// **'Traffic forwarding'**
+  String get appUsage;
+
+  /// No description provided for @appUsageToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get appUsageToday;
+
+  /// No description provided for @appUsageWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get appUsageWeek;
+
+  /// No description provided for @appUsageMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get appUsageMonth;
+
+  /// No description provided for @appUsageUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown application'**
+  String get appUsageUnknown;
+
+  /// No description provided for @appUsageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Counts all traffic handled by FlClash by application, including direct and proxy connections. Unidentified connections appear as Unknown application.'**
+  String get appUsageHint;
+
+  /// No description provided for @appUsageEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No usage recorded for this period.'**
+  String get appUsageEmpty;
+
+  /// No description provided for @appUsageLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load usage history.'**
+  String get appUsageLoadFailed;
+
+  /// No description provided for @appUsageDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily usage'**
+  String get appUsageDaily;
+
+  /// No description provided for @appUsageCustomRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom date range'**
+  String get appUsageCustomRange;
+
+  /// No description provided for @appUsageFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Start date'**
+  String get appUsageFrom;
+
+  /// No description provided for @appUsageTo.
+  ///
+  /// In en, this message translates to:
+  /// **'End date'**
+  String get appUsageTo;
+
+  /// No description provided for @appUsageInvalidRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid dates as YYYY-MM-DD. The end date must not precede the start date.'**
+  String get appUsageInvalidRange;
+
   /// No description provided for @rule.
   ///
   /// In en, this message translates to:

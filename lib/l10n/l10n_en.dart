@@ -9,6 +9,88 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get backgroundImage => 'Background image';
+
+  @override
+  String get backgroundImageChoose => 'Choose image';
+
+  @override
+  String get backgroundImageRemove => 'Remove image';
+
+  @override
+  String get backgroundImageOpacity => 'Image opacity';
+
+  @override
+  String get backgroundImageHint =>
+      'Applies to page backgrounds. The selected image is saved in the app; maximum file size: 20 MB.';
+
+  @override
+  String get backgroundImageInvalid =>
+      'This image cannot be opened. Please choose a supported image.';
+
+  @override
+  String get backgroundImageTooLarge =>
+      'Please choose an image smaller than 20 MB.';
+
+  @override
+  String get backgroundImageMissing =>
+      'Background image is missing or cannot be opened.';
+
+  @override
+  String get usage => 'Usage';
+
+  @override
+  String get appUsageProfiles => 'Profile usage';
+
+  @override
+  String get appUsageUnknownProfile => 'Unassigned profile';
+
+  @override
+  String get appUsageProfileHint =>
+      'Counts traffic through proxy nodes, excluding direct and blocked traffic, under the profile active when the connection opened. Proxy usage is recorded from this version onward and may differ from provider billing.';
+
+  @override
+  String get appUsage => 'Traffic forwarding';
+
+  @override
+  String get appUsageToday => 'Today';
+
+  @override
+  String get appUsageWeek => '7 days';
+
+  @override
+  String get appUsageMonth => '30 days';
+
+  @override
+  String get appUsageUnknown => 'Unknown application';
+
+  @override
+  String get appUsageHint =>
+      'Counts all traffic handled by FlClash by application, including direct and proxy connections. Unidentified connections appear as Unknown application.';
+
+  @override
+  String get appUsageEmpty => 'No usage recorded for this period.';
+
+  @override
+  String get appUsageLoadFailed => 'Unable to load usage history.';
+
+  @override
+  String get appUsageDaily => 'Daily usage';
+
+  @override
+  String get appUsageCustomRange => 'Custom date range';
+
+  @override
+  String get appUsageFrom => 'Start date';
+
+  @override
+  String get appUsageTo => 'End date';
+
+  @override
+  String get appUsageInvalidRange =>
+      'Enter valid dates as YYYY-MM-DD. The end date must not precede the start date.';
+
+  @override
   String get rule => 'Rule';
 
   @override

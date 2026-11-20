@@ -8,7 +8,6 @@ import 'package:fl_clash/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prism_ui/prism_ui.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -70,7 +69,9 @@ class _HomeShell extends ConsumerWidget {
       appSettingProvider.select((state) => state.floatingNavigationBar),
     );
     return Surface(
-      color: SurfaceLevel.page.colorOf(context.colorScheme),
+      color: PageBackgroundScope.isEnabledOf(context)
+          ? Colors.transparent
+          : SurfaceLevel.page.colorOf(context.colorScheme),
       child: Column(
         children: [
           Expanded(

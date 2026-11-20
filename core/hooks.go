@@ -20,6 +20,7 @@ func init() {
 	}
 	statistic.DefaultRequestNotify = func(c statistic.Tracker) {
 		notifyProbeRoute(c)
+		watchAppUsage(c)
 		if hasEventListener() {
 			sendMessage(RequestMessage, c)
 			watchRequestTraffic(c)

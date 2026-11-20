@@ -46,9 +46,12 @@ abstract final class BackupEntries {
     required Iterable<int> scriptIds,
     required Iterable<ClashProvider> providers,
     Iterable<MitmModule> mitmModules = const [],
+    String? backgroundImage,
   }) {
     final localModules = mitmModules.where((item) => !item.isRemote);
     return [
+      if (isBackgroundImageName(backgroundImage))
+        'backgrounds/$backgroundImage',
       ...profileIds.map(profile),
       ...scriptIds.map(script),
       ...providers.where((item) => !item.isRemote).map(provider),
@@ -59,12 +62,19 @@ abstract final class BackupEntries {
     ];
   }
 
-  static List<String> ofData(MigrationData data) {
+  static List<String> ofData(
+    MigrationData data, {
+    bool includeBackground = true,
+  }) {
+    final theme = data.configMap?['themeProps'];
     return of(
       profileIds: data.profiles.map((item) => item.id),
       scriptIds: data.scripts.map((item) => item.id),
       providers: data.clashProviders,
       mitmModules: data.mitmModules,
+      backgroundImage: includeBackground && theme is Map
+          ? backgroundImageFromJson(theme['backgroundImage'])
+          : null,
     );
   }
 

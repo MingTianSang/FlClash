@@ -56,6 +56,13 @@ class SystemAction extends _$SystemAction {
     }
     await Future.wait([
       ?saveOperation,
+      if (ref.read(coreStatusProvider) == CoreStatus.connected)
+        _core.flushAppUsage().onError<Object>((error, stackTrace) {
+          commonPrint.log(
+            'Application usage flush failed',
+            logLevel: LogLevel.warning,
+          );
+        }),
       bootGuard.markClosed(),
       ?systemProxyQueue?.close(),
     ]);

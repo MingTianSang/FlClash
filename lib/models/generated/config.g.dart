@@ -364,6 +364,10 @@ Map<String, dynamic> _$TextScaleToJson(_TextScale instance) =>
     <String, dynamic>{'enable': instance.enable, 'scale': instance.scale};
 
 _ThemeProps _$ThemePropsFromJson(Map<String, dynamic> json) => _ThemeProps(
+  backgroundImage: backgroundImageFromJson(json['backgroundImage']),
+  backgroundOpacity: json['backgroundOpacity'] == null
+      ? defaultBackgroundOpacity
+      : backgroundOpacityFromJson(json['backgroundOpacity']),
   primaryColor: (json['primaryColor'] as num?)?.toInt(),
   primaryColors:
       (json['primaryColors'] as List<dynamic>?)
@@ -395,6 +399,8 @@ _ThemeProps _$ThemePropsFromJson(Map<String, dynamic> json) => _ThemeProps(
 
 Map<String, dynamic> _$ThemePropsToJson(_ThemeProps instance) =>
     <String, dynamic>{
+      'backgroundImage': instance.backgroundImage,
+      'backgroundOpacity': instance.backgroundOpacity,
       'primaryColor': instance.primaryColor,
       'primaryColors': instance.primaryColors,
       'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,

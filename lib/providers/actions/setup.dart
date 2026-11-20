@@ -66,6 +66,8 @@ class SetupAction extends _$SetupAction {
           ref.read(appSettingProvider).showTrayTitle);
 
   SetupParams get _setupParams => SetupParams(
+    profileId: ref.read(currentProfileProvider)?.id.toString() ?? '',
+    profileName: ref.read(currentProfileProvider)?.realLabel ?? '',
     selectedMap: ref.read(selectedMapProvider),
     options: ref.read(coreOptionsProvider),
   );
@@ -802,19 +804,27 @@ class SetupAction extends _$SetupAction {
       return getProfile(setupState: state, patchConfig: realPatchConfig);
     }, title: 'build profile');
     final profileFailed = realProfile == null;
-    final setupParams = _setupParams.copyWith(base: realProfile?.base);
+    final setupParams = _setupParams.copyWith(
+      base: realProfile?.base,
+      profileId: profile?.id.toString() ?? '',
+      profileName: profile?.realLabel ?? '',
+    );
     final inputs = switch (setupState) {
       final state? when !profileFailed => (
         state,
         realPatchConfig,
         networkSetting,
-        _appliedParams,
+        setupParams.copyWith(base: null, selectedMap: const {}),
       ),
       _ => null,
     };
     final yamlString = realProfile?.yaml ?? '';
     final yamlMd5 = realProfile?.md5 ?? '';
-    if (!profileFailed && yamlMd5 == globalState.lastConfigMd5 && !force) {
+    if (!profileFailed &&
+        yamlMd5 == globalState.lastConfigMd5 &&
+        setupParams.profileId == _appliedInputs?.$4.profileId &&
+        setupParams.profileName == _appliedInputs?.$4.profileName &&
+        !force) {
       _appliedInputs = inputs;
       globalState.lastConfigCounts = realProfile.counts;
       await preloadInvoke?.call();

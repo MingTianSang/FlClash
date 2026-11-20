@@ -37,6 +37,8 @@ enum CoreMethod {
   trafficCurrent('traffic.current'),
   trafficTotal('traffic.total'),
   trafficReset('traffic.reset'),
+  trafficAppUsage('traffic.appUsage'),
+  trafficFlushAppUsage('traffic.flushAppUsage'),
   connectionList('connection.list'),
   connectionCount('connection.count'),
   connectionClose('connection.close'),

@@ -139,6 +139,7 @@ abstract class SystemProxySelectorState with _$SystemProxySelectorState {
 @freezed
 abstract class CurrentProfileSelectorState with _$CurrentProfileSelectorState {
   const factory CurrentProfileSelectorState({
+    int? id,
     required String label,
     required Map<String, String> selectedMap,
   }) = _CurrentProfileSelectorState;

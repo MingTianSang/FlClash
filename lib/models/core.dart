@@ -12,6 +12,8 @@ abstract class SetupParams with _$SetupParams {
     @JsonKey(includeIfNull: false) SetupBase? base,
     @JsonKey(name: 'selected-map') required Map<String, String> selectedMap,
     required CoreOptions options,
+    @Default('') @JsonKey(name: 'profile-id') String profileId,
+    @Default('') @JsonKey(name: 'profile-name') String profileName,
   }) = _SetupParams;
 
   factory SetupParams.fromJson(Map<String, dynamic> json) =>

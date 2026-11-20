@@ -84,6 +84,13 @@ class AppPath {
     return join(mHomeDirPath, 'database.sqlite');
   }
 
+  Future<String> backgroundImagePath(String name) async {
+    if (!isBackgroundImageName(name)) {
+      throw ArgumentError.value(name, 'name');
+    }
+    return join(await homeDirPath, 'backgrounds', name);
+  }
+
   Future<String> get tempFilePath async {
     final mTempDir = await _tempDir.value;
     return join(mTempDir.path, 'temp$uniqueId');

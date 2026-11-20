@@ -3915,7 +3915,7 @@ as String?,
 /// @nodoc
 mixin _$CurrentProfileSelectorState {
 
- String get label; Map<String, String> get selectedMap;
+ int? get id; String get label; Map<String, String> get selectedMap;
 /// Create a copy of CurrentProfileSelectorState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3927,20 +3927,20 @@ $CurrentProfileSelectorStateCopyWith<CurrentProfileSelectorState> get copyWith =
 @override
 bool operator ==(Object other) {
   final _this = this as CurrentProfileSelectorState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CurrentProfileSelectorState&&(identical(other.label, _this.label) || other.label == _this.label)&&const DeepCollectionEquality().equals(other.selectedMap, _this.selectedMap));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CurrentProfileSelectorState&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.label, _this.label) || other.label == _this.label)&&const DeepCollectionEquality().equals(other.selectedMap, _this.selectedMap));
 }
 
 
 @override
 int get hashCode {
   final _this = this as CurrentProfileSelectorState;
-  return Object.hash(runtimeType,_this.label,const DeepCollectionEquality().hash(_this.selectedMap));
+  return Object.hash(runtimeType,_this.id,_this.label,const DeepCollectionEquality().hash(_this.selectedMap));
 }
 
 @override
 String toString() {
   final _this = this as CurrentProfileSelectorState;
-  return 'CurrentProfileSelectorState(label: ${_this.label}, selectedMap: ${_this.selectedMap})';
+  return 'CurrentProfileSelectorState(id: ${_this.id}, label: ${_this.label}, selectedMap: ${_this.selectedMap})';
 }
 
 
@@ -3951,7 +3951,7 @@ abstract mixin class $CurrentProfileSelectorStateCopyWith<$Res>  {
   factory $CurrentProfileSelectorStateCopyWith(CurrentProfileSelectorState value, $Res Function(CurrentProfileSelectorState) _then) = _$CurrentProfileSelectorStateCopyWithImpl;
 @useResult
 $Res call({
- String label, Map<String, String> selectedMap
+ int? id, String label, Map<String, String> selectedMap
 });
 
 
@@ -3968,9 +3968,10 @@ class _$CurrentProfileSelectorStateCopyWithImpl<$Res>
 
 /// Create a copy of CurrentProfileSelectorState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? label = null,Object? selectedMap = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? label = null,Object? selectedMap = null,}) {
   return _then(CurrentProfileSelectorState(
-label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String,selectedMap: null == selectedMap ? _self.selectedMap : selectedMap // ignore: cast_nullable_to_non_nullable
 as Map<String, String>,
   ));
@@ -4057,10 +4058,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String label,  Map<String, String> selectedMap)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String label,  Map<String, String> selectedMap)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CurrentProfileSelectorState() when $default != null:
-return $default(_that.label,_that.selectedMap);case _:
+return $default(_that.id,_that.label,_that.selectedMap);case _:
   return orElse();
 
 }
@@ -4078,10 +4079,10 @@ return $default(_that.label,_that.selectedMap);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String label,  Map<String, String> selectedMap)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String label,  Map<String, String> selectedMap)  $default,) {final _that = this;
 switch (_that) {
 case _CurrentProfileSelectorState():
-return $default(_that.label,_that.selectedMap);case _:
+return $default(_that.id,_that.label,_that.selectedMap);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4098,10 +4099,10 @@ return $default(_that.label,_that.selectedMap);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String label,  Map<String, String> selectedMap)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String label,  Map<String, String> selectedMap)?  $default,) {final _that = this;
 switch (_that) {
 case _CurrentProfileSelectorState() when $default != null:
-return $default(_that.label,_that.selectedMap);case _:
+return $default(_that.id,_that.label,_that.selectedMap);case _:
   return null;
 
 }
@@ -4113,9 +4114,10 @@ return $default(_that.label,_that.selectedMap);case _:
 
 
 class _CurrentProfileSelectorState implements CurrentProfileSelectorState {
-  const _CurrentProfileSelectorState({required this.label, required  Map<String, String> selectedMap}): _selectedMap = selectedMap;
+  const _CurrentProfileSelectorState({this.id, required this.label, required  Map<String, String> selectedMap}): _selectedMap = selectedMap;
   
 
+@override final  int? id;
 @override final  String label;
  final  Map<String, String> _selectedMap;
 @override Map<String, String> get selectedMap {
@@ -4135,18 +4137,18 @@ _$CurrentProfileSelectorStateCopyWith<_CurrentProfileSelectorState> get copyWith
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CurrentProfileSelectorState&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other.selectedMap, _selectedMap));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CurrentProfileSelectorState&&(identical(other.id, id) || other.id == id)&&(identical(other.label, label) || other.label == label)&&const DeepCollectionEquality().equals(other.selectedMap, _selectedMap));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,label,const DeepCollectionEquality().hash(_selectedMap));
+    return Object.hash(runtimeType,id,label,const DeepCollectionEquality().hash(_selectedMap));
 }
 
 @override
 String toString() {
-    return 'CurrentProfileSelectorState(label: $label, selectedMap: $selectedMap)';
+    return 'CurrentProfileSelectorState(id: $id, label: $label, selectedMap: $selectedMap)';
 }
 
 
@@ -4157,7 +4159,7 @@ abstract mixin class _$CurrentProfileSelectorStateCopyWith<$Res> implements $Cur
   factory _$CurrentProfileSelectorStateCopyWith(_CurrentProfileSelectorState value, $Res Function(_CurrentProfileSelectorState) _then) = __$CurrentProfileSelectorStateCopyWithImpl;
 @override @useResult
 $Res call({
- String label, Map<String, String> selectedMap
+ int? id, String label, Map<String, String> selectedMap
 });
 
 
@@ -4174,9 +4176,10 @@ class __$CurrentProfileSelectorStateCopyWithImpl<$Res>
 
 /// Create a copy of CurrentProfileSelectorState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? label = null,Object? selectedMap = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? label = null,Object? selectedMap = null,}) {
   return _then(_CurrentProfileSelectorState(
-label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String,selectedMap: null == selectedMap ? _self._selectedMap : selectedMap // ignore: cast_nullable_to_non_nullable
 as Map<String, String>,
   ));

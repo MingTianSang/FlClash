@@ -51,16 +51,18 @@ const (
 	ruleSetCompileMethod   CoreMethod = "ruleSet.compile"
 	geoUpdateMethod        CoreMethod = "geo.update"
 
-	trafficCurrentMethod     CoreMethod = "traffic.current"
-	trafficTotalMethod       CoreMethod = "traffic.total"
-	trafficResetMethod       CoreMethod = "traffic.reset"
-	connectionListMethod     CoreMethod = "connection.list"
-	connectionCountMethod    CoreMethod = "connection.count"
-	connectionCloseMethod    CoreMethod = "connection.close"
-	connectionCloseAllMethod CoreMethod = "connection.closeAll"
-	connectionResetMethod    CoreMethod = "connection.reset"
-	dnsClearCacheMethod      CoreMethod = "dns.clearCache"
-	networkChangedMethod     CoreMethod = "network.changed"
+	trafficCurrentMethod       CoreMethod = "traffic.current"
+	trafficTotalMethod         CoreMethod = "traffic.total"
+	trafficResetMethod         CoreMethod = "traffic.reset"
+	trafficAppUsageMethod      CoreMethod = "traffic.appUsage"
+	trafficFlushAppUsageMethod CoreMethod = "traffic.flushAppUsage"
+	connectionListMethod       CoreMethod = "connection.list"
+	connectionCountMethod      CoreMethod = "connection.count"
+	connectionCloseMethod      CoreMethod = "connection.close"
+	connectionCloseAllMethod   CoreMethod = "connection.closeAll"
+	connectionResetMethod      CoreMethod = "connection.reset"
+	dnsClearCacheMethod        CoreMethod = "dns.clearCache"
+	networkChangedMethod       CoreMethod = "network.changed"
 
 	logStartMethod      CoreMethod = "log.start"
 	logStopMethod       CoreMethod = "log.stop"
@@ -119,6 +121,8 @@ type SetupParams struct {
 	Base        *SetupBase        `json:"base,omitempty"`
 	SelectedMap map[string]string `json:"selected-map"`
 	Options     CoreOptions       `json:"options"`
+	ProfileID   string            `json:"profile-id"`
+	ProfileName string            `json:"profile-name"`
 }
 
 type CoreOptions struct {

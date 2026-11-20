@@ -1232,6 +1232,54 @@ void main() {
     );
 
     test(
+      'identical YAML in another profile still updates its accounting identity',
+      () async {
+        final profiles = [
+          Profile.custom(label: 'Office'),
+          Profile.custom(label: 'Home'),
+        ];
+        final core = _MockCoreHandlerInterface();
+        when(() => core.getExternalProviders()).thenAnswer((_) async => []);
+        when(
+          () => core.getProxies(),
+        ).thenAnswer((_) async => const ProxiesData(all: [], proxies: {}));
+        final pushed = <SetupParams>[];
+        when(() => core.setupConfig(any())).thenAnswer((call) async {
+          pushed.add(call.positionalArguments.single as SetupParams);
+        });
+        final scoped = ProviderContainer(
+          overrides: [
+            profilesProvider.overrideWith(() => TestProfiles(profiles)),
+            currentProfileIdProvider.overrideWithBuild(
+              (_, _) => profiles.first.id,
+            ),
+            setupStateProvider.overrideWith((_, _) => nullProfileSetupState),
+            coreHandlerProvider.overrideWithValue(CoreController.scoped(core)),
+            setupActionProvider.overrideWith(SetupAction.new),
+          ],
+        );
+        addTearDown(scoped.dispose);
+        final setup = scoped.read(setupActionProvider.notifier);
+        scoped.listen(currentProfileProvider, (_, _) {});
+        expect(await setup.applyProfile(force: true), isTrue);
+        final digest = globalState.lastConfigMd5;
+        await setup.applyProfile();
+        expect(pushed, hasLength(1));
+        scoped
+            .read(currentProfileIdProvider.notifier)
+            .update((_) => profiles.last.id);
+        await scoped.pump();
+        expect(await setup.applyProfile(), isTrue);
+        expect(globalState.lastConfigMd5, digest);
+        expect(
+          pushed.map((params) => params.profileId),
+          profiles.map((profile) => profile.id.toString()),
+        );
+        expect(pushed.last.profileName, 'Home');
+      },
+    );
+
+    test(
       'provider directories it cannot create leave the config applied',
       () async {
         final profile = Profile.normal(label: 'p', url: 'http://127.0.0.1:9/');
@@ -1745,6 +1793,8 @@ void main() {
       expect(await setupAction.applyProfile(force: true), isTrue);
 
       final base = pushed.single.base!;
+      expect(pushed.single.profileId, profile.id.toString());
+      expect(pushed.single.profileName, profile.realLabel);
       expect(base.path, await appPath.getProfilePath(profile.id.toString()));
       final overlay = loadYaml(base.overlay) as YamlMap;
       expect(overlay['rules'], ['DOMAIN,added.test,Proxy']);

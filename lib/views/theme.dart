@@ -9,6 +9,7 @@ import 'package:fl_clash/providers/state.dart';
 import 'package:fl_clash/ui/icons/icons.dart';
 import 'package:fl_clash/views/font_family.dart';
 import 'package:fl_clash/views/theme_preview.dart';
+import 'package:fl_clash/views/theme_background.dart';
 import 'package:fl_clash/widgets/widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,6 +31,8 @@ class ThemeView extends StatelessWidget {
           const ThemeLivePreview(),
           const SizedBox(height: 16),
           const _ThemeModeItem(),
+          const SizedBox(height: 16),
+          const ThemeBackgroundSettings(),
           const SizedBox(height: 16),
           const _PureBlackItem(),
           const SizedBox(height: 16),

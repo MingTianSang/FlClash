@@ -9,6 +9,87 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get backgroundImage => 'Imagen de fondo';
+
+  @override
+  String get backgroundImageChoose => 'Elegir imagen';
+
+  @override
+  String get backgroundImageRemove => 'Quitar imagen';
+
+  @override
+  String get backgroundImageOpacity => 'Opacidad de la imagen';
+
+  @override
+  String get backgroundImageHint =>
+      'Se aplica al fondo de las páginas. La imagen se guarda en la aplicación. Tamaño máximo: 20 MB.';
+
+  @override
+  String get backgroundImageInvalid =>
+      'No se puede abrir esta imagen. Elige un formato compatible.';
+
+  @override
+  String get backgroundImageTooLarge => 'Elige una imagen de hasta 20 MB.';
+
+  @override
+  String get backgroundImageMissing =>
+      'La imagen de fondo no existe o no se puede abrir.';
+
+  @override
+  String get usage => 'Uso';
+
+  @override
+  String get appUsageProfiles => 'Uso por perfil';
+
+  @override
+  String get appUsageUnknownProfile => 'Perfil sin asignar';
+
+  @override
+  String get appUsageProfileHint =>
+      'Solo cuenta el tráfico por nodos proxy, sin conexiones directas ni bloqueadas, para el perfil activo al abrir cada conexión. Este registro comienza con esta versión y puede diferir de la facturación del proveedor.';
+
+  @override
+  String get appUsage => 'Reenvío de tráfico';
+
+  @override
+  String get appUsageToday => 'Hoy';
+
+  @override
+  String get appUsageWeek => '7 días';
+
+  @override
+  String get appUsageMonth => '30 días';
+
+  @override
+  String get appUsageUnknown => 'Aplicación desconocida';
+
+  @override
+  String get appUsageHint =>
+      'Cuenta por aplicación todo el tráfico gestionado por FlClash, incluidas conexiones directas y proxy. Las conexiones sin un proceso identificado se agrupan como Aplicación desconocida.';
+
+  @override
+  String get appUsageEmpty => 'No hay tráfico registrado en este período.';
+
+  @override
+  String get appUsageLoadFailed => 'No se pudo cargar el historial de tráfico.';
+
+  @override
+  String get appUsageDaily => 'Tráfico diario';
+
+  @override
+  String get appUsageCustomRange => 'Período personalizado';
+
+  @override
+  String get appUsageFrom => 'Fecha de inicio';
+
+  @override
+  String get appUsageTo => 'Fecha de fin';
+
+  @override
+  String get appUsageInvalidRange =>
+      'Introduce fechas válidas con el formato YYYY-MM-DD. La fecha de fin no puede ser anterior a la de inicio.';
+
+  @override
   String get rule => 'Regla';
 
   @override

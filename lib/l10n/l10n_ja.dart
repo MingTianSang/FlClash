@@ -9,6 +9,85 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get backgroundImage => '背景画像';
+
+  @override
+  String get backgroundImageChoose => '画像を選択';
+
+  @override
+  String get backgroundImageRemove => '画像を削除';
+
+  @override
+  String get backgroundImageOpacity => '画像の不透明度';
+
+  @override
+  String get backgroundImageHint =>
+      '各ページの背景に適用します。選択した画像はアプリ内に保存されます。上限：20 MB。';
+
+  @override
+  String get backgroundImageInvalid => 'この画像を開けません。対応する画像を選択してください。';
+
+  @override
+  String get backgroundImageTooLarge => '20 MB 以下の画像を選択してください。';
+
+  @override
+  String get backgroundImageMissing => '背景画像が見つからないか、開けません。';
+
+  @override
+  String get usage => '使用量';
+
+  @override
+  String get appUsageProfiles => 'プロファイル別使用量';
+
+  @override
+  String get appUsageUnknownProfile => '未割り当てのプロファイル';
+
+  @override
+  String get appUsageProfileHint =>
+      '接続開始時のプロファイルで、プロキシ経由の通信のみ集計し、直接接続とブロックされた通信を除外します。記録はこのバージョンから開始され、サービス側の課金量とは異なる場合があります。';
+
+  @override
+  String get appUsage => '通信転送';
+
+  @override
+  String get appUsageToday => '今日';
+
+  @override
+  String get appUsageWeek => '7日間';
+
+  @override
+  String get appUsageMonth => '30日間';
+
+  @override
+  String get appUsageUnknown => '不明なアプリ';
+
+  @override
+  String get appUsageHint =>
+      '直接接続とプロキシ接続を含む、FlClash が処理した全通信量をアプリ別に集計します。プロセスを識別できない接続は「不明なアプリ」にまとめられます。';
+
+  @override
+  String get appUsageEmpty => 'この期間の通信量は記録されていません。';
+
+  @override
+  String get appUsageLoadFailed => '通信量の履歴を読み込めません。';
+
+  @override
+  String get appUsageDaily => '日別通信量';
+
+  @override
+  String get appUsageCustomRange => '期間を指定';
+
+  @override
+  String get appUsageFrom => '開始日';
+
+  @override
+  String get appUsageTo => '終了日';
+
+  @override
+  String get appUsageInvalidRange =>
+      '有効な日付を YYYY-MM-DD 形式で入力してください。終了日は開始日以降にしてください。';
+
+  @override
   String get rule => 'ルール';
 
   @override
